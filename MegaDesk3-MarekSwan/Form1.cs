@@ -19,11 +19,34 @@ namespace MegaDesk3_MarekSwan
 
         private void button1_Click(object sender, EventArgs e)
         {
+            NewQuoteForm addNewQuoteForm = new NewQuoteForm();
+            addNewQuoteForm.Tag = this;
+            addNewQuoteForm.Show(this);
+            Hide();
+        }
 
+        private void btnViewQuotes_Click(object sender, EventArgs e)
+        {
+            SearchQuoteForm newSearchForm = new SearchQuoteForm();
+            newSearchForm.Tag = this;
+            newSearchForm.Show(this);
+            Hide();
+        }
+
+        private void btnSearchQuotes_Click(object sender, EventArgs e)
+        {
+            ViewQuoteForm newViewForm = new ViewQuoteForm();
+            newViewForm.Tag = this;
+            newViewForm.Show(this);
+            Hide();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         //custom event created for displaying a date in a specified form, event activated on form load
-
         private void display_Date(object sender, EventArgs e)
 
         {
@@ -33,5 +56,6 @@ namespace MegaDesk3_MarekSwan
             lblCurrentDateTime.Text = (currentDate.ToString("MMMM dd, yyyy") + ".");
 
         }
+
     }
 }

@@ -52,10 +52,31 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewQuoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewQuoteForm.Designer.cs">
+      <DependentUpon>NewQuoteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchQuoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchQuoteForm.Designer.cs">
+      <DependentUpon>SearchQuoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewQuoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewQuoteForm.Designer.cs">
+      <DependentUpon>ViewQuoteForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewQuoteForm.resx">
+      <DependentUpon>NewQuoteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +87,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchQuoteForm.resx">
+      <DependentUpon>SearchQuoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewQuoteForm.resx">
+      <DependentUpon>ViewQuoteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

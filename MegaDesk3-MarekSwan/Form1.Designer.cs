@@ -67,6 +67,7 @@
             this.btnViewQuotes.TabIndex = 2;
             this.btnViewQuotes.Text = "View Quotes";
             this.btnViewQuotes.UseVisualStyleBackColor = true;
+            this.btnViewQuotes.Click += new System.EventHandler(this.btnViewQuotes_Click);
             // 
             // btnSearchQuotes
             // 
@@ -77,6 +78,7 @@
             this.btnSearchQuotes.TabIndex = 3;
             this.btnSearchQuotes.Text = "Search Quotes";
             this.btnSearchQuotes.UseVisualStyleBackColor = true;
+            this.btnSearchQuotes.Click += new System.EventHandler(this.btnSearchQuotes_Click);
             // 
             // btnExit
             // 
@@ -87,6 +89,7 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblCurrentDateTime
             // 
