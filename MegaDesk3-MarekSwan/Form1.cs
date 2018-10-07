@@ -10,11 +10,28 @@ using System.Windows.Forms;
 
 namespace MegaDesk3_MarekSwan
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //custom event created for displaying a date in a specified form, event activated on form load
+
+        private void display_Date(object sender, EventArgs e)
+
+        {
+
+            DateTime currentDate = DateTime.Now;
+
+            lblCurrentDateTime.Text = (currentDate.ToString("MMMM dd, yyyy") + ".");
+
         }
     }
 }
