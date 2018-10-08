@@ -13,8 +13,10 @@ namespace MegaDesk3_MarekSwan
         private float Depth { get; set; }
         private int NumOfDraws { get; set; }
         private float SurfaceArea { get; }
+        public SurfaceMaterials GetSurface { get; set; }
+        public int SurfaceValue { get; set; }
 
-        enum SurfaceMaterials
+        public enum SurfaceMaterials
         {
             Oak,
             Laminate,
@@ -23,10 +25,12 @@ namespace MegaDesk3_MarekSwan
             Veneer
         }
 
+
         //default constructor
-        Desk(float Width, float Depth, int NumOfDraws)
+        public Desk(float Width, float Depth, int NumOfDraws)
         {
             SurfaceArea = Width * Depth;
+            this.SurfaceValue = (int)SurfaceMaterials.Oak;
         }
 
         //method for sending Width and Depth
