@@ -21,7 +21,7 @@ namespace MegaDesk3_MarekSwan
 
         }
 
-        //This is a temp peice of code, a parent child realtionship is required.
+        //This is a temp peice of code, a parent child realtionship is required (maybe)
         Desk Desk1 = new Desk(20, 34, 1);
 
         //trying to figure out enums
