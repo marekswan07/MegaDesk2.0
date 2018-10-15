@@ -27,17 +27,18 @@ namespace MegaDesk3_MarekSwan
 
         private void btnViewQuotes_Click(object sender, EventArgs e)
         {
-            SearchQuoteForm newSearchForm = new SearchQuoteForm();
-            newSearchForm.Tag = this;
-            newSearchForm.Show(this);
+            ViewQuoteForm newViewForm = new ViewQuoteForm();
+            newViewForm.Tag = this;
+            newViewForm.Show(this);
             Hide();
         }
 
         private void btnSearchQuotes_Click(object sender, EventArgs e)
         {
-            ViewQuoteForm newViewForm = new ViewQuoteForm();
-            newViewForm.Tag = this;
-            newViewForm.Show(this);
+            
+            SearchQuoteForm newSearchForm = new SearchQuoteForm();
+            newSearchForm.Tag = this;
+            newSearchForm.Show(this);
             Hide();
         }
 
@@ -50,11 +51,8 @@ namespace MegaDesk3_MarekSwan
         private void display_Date(object sender, EventArgs e)
 
         {
-
             DateTime currentDate = DateTime.Now;
-
             lblCurrentDateTime.Text = (currentDate.ToString("MMMM dd, yyyy") + ".");
-
         }
 
     }

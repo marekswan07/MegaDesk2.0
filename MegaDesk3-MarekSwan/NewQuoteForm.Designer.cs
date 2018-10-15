@@ -35,21 +35,21 @@
             this.lblErrorMessages = new System.Windows.Forms.Label();
             this.lblCustName = new System.Windows.Forms.Label();
             this.txtCustName = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numUDWidth = new System.Windows.Forms.NumericUpDown();
+            this.numUDDepth = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numUDDraws = new System.Windows.Forms.NumericUpDown();
             this.comboSurface = new System.Windows.Forms.ComboBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.comboSpeed = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDepth)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDraws)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNewQuoteExit
@@ -98,7 +98,7 @@
             // 
             this.lblErrorMessages.AutoSize = true;
             this.lblErrorMessages.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorMessages.Location = new System.Drawing.Point(174, 259);
+            this.lblErrorMessages.Location = new System.Drawing.Point(158, 261);
             this.lblErrorMessages.Name = "lblErrorMessages";
             this.lblErrorMessages.Size = new System.Drawing.Size(187, 18);
             this.lblErrorMessages.TabIndex = 4;
@@ -124,47 +124,47 @@
             this.txtCustName.TabIndex = 6;
             this.txtCustName.Validated += new System.EventHandler(this.ValidateCustomerName);
             // 
-            // numericUpDown1
+            // numUDWidth
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(90, 32);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numUDWidth.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUDWidth.Location = new System.Drawing.Point(90, 32);
+            this.numUDWidth.Maximum = new decimal(new int[] {
             96,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numUDWidth.Minimum = new decimal(new int[] {
             24,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(93, 26);
-            this.numericUpDown1.TabIndex = 7;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numUDWidth.Name = "numUDWidth";
+            this.numUDWidth.Size = new System.Drawing.Size(93, 26);
+            this.numUDWidth.TabIndex = 7;
+            this.numUDWidth.Value = new decimal(new int[] {
             24,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // numUDDepth
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(90, 68);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numUDDepth.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUDDepth.Location = new System.Drawing.Point(90, 68);
+            this.numUDDepth.Maximum = new decimal(new int[] {
             48,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numUDDepth.Minimum = new decimal(new int[] {
             12,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(93, 26);
-            this.numericUpDown2.TabIndex = 8;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numUDDepth.Name = "numUDDepth";
+            this.numUDDepth.Size = new System.Drawing.Size(93, 26);
+            this.numUDDepth.TabIndex = 8;
+            this.numUDDepth.Value = new decimal(new int[] {
             12,
             0,
             0,
@@ -172,9 +172,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.numUDWidth);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.numUDDepth);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("OCR A Extended", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 91);
@@ -216,7 +216,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.numericUpDown3);
+            this.groupBox2.Controls.Add(this.numUDDraws);
             this.groupBox2.Controls.Add(this.comboSurface);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
@@ -228,34 +228,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Extras";
             // 
+            // numUDDraws
+            // 
+            this.numUDDraws.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUDDraws.Location = new System.Drawing.Point(138, 61);
+            this.numUDDraws.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numUDDraws.Name = "numUDDraws";
+            this.numUDDraws.Size = new System.Drawing.Size(93, 26);
+            this.numUDDraws.TabIndex = 14;
+            // 
             // comboSurface
             // 
             this.comboSurface.Font = new System.Drawing.Font("Calibri", 10.25F);
             this.comboSurface.FormattingEnabled = true;
-            this.comboSurface.Items.AddRange(new object[] {
-            "Oak",
-            "Laminate",
-            "Pine",
-            "Rosewood",
-            "Veneer"});
             this.comboSurface.Location = new System.Drawing.Point(137, 25);
             this.comboSurface.Name = "comboSurface";
             this.comboSurface.Size = new System.Drawing.Size(121, 25);
             this.comboSurface.TabIndex = 13;
             this.comboSurface.Text = "Choose an Option";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(138, 61);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(93, 26);
-            this.numericUpDown3.TabIndex = 14;
             // 
             // comboSpeed
             // 
@@ -288,13 +282,13 @@
             this.Controls.Add(this.btnNewQuoteExit);
             this.Name = "NewQuoteForm";
             this.Text = "New Quote";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDepth)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDraws)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,14 +303,14 @@
         private System.Windows.Forms.Label lblErrorMessages;
         private System.Windows.Forms.Label lblCustName;
         private System.Windows.Forms.TextBox txtCustName;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numUDWidth;
+        private System.Windows.Forms.NumericUpDown numUDDepth;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numUDDraws;
         private System.Windows.Forms.ComboBox comboSurface;
         private System.Windows.Forms.ComboBox comboSpeed;
     }

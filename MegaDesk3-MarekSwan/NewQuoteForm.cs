@@ -16,15 +16,22 @@ namespace MegaDesk3_MarekSwan
         {
             InitializeComponent();
             btnSubmit.Enabled = false;
+
+            //Some propeties for the form to use
+            var materials = new List<Desk.SurfaceMaterials>();
+            materials = Enum.GetValues(typeof(Desk.SurfaceMaterials))
+                        .Cast<Desk.SurfaceMaterials>()
+                        .ToList();
+
+            comboSurface.DataSource = materials;
         }
+
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-   
-
             bool validInput = ComboBox_Validating();
 
-            lblErrorMessages.Text = "Please provide surface material and delivery speed";
+            lblErrorMessages.Text = "Please provide a delivery speed";
             lblErrorMessages.ForeColor = Color.Red;
             lblErrorMessages.Visible = true;
 
@@ -32,14 +39,21 @@ namespace MegaDesk3_MarekSwan
             {
                 lblErrorMessages.Visible = false;
             }
+
+            //trying something fancy here
+            var currentDate = DateTime.Today;
+            var quote = new DeskQuote((float)numUDWidth.Value,(float)numUDDepth.Value,
+                                       (int)numUDDraws.Value, (string)comboSurface.ValueMember,
+                                       (txtCustName.Text),(string)comboSpeed.ValueMember);
+            quote.CalcQuote();
+            quote.QuoteDate = currentDate;
+
             
         }
 
         private void ValidateCustomerName(object sender, EventArgs e)
         {
-
             // Confirm that the custName txtbox isn't empty
-
             if (String.IsNullOrEmpty(txtCustName.Text))
 
             {
@@ -69,18 +83,10 @@ namespace MegaDesk3_MarekSwan
         //this will check if both dropdowns have a selected value before continuing with the submit
         private bool ComboBox_Validating()
         {
-            if (comboSpeed.SelectedIndex < 1 || comboSurface.SelectedIndex < 1)
+            if (comboSpeed.SelectedIndex < 1)
             {
                 // Cancel the event and select the text to be corrected by the user.
-                if(comboSpeed.SelectedIndex < 1)
-                {
-                    comboSpeed.Select();
-                }
-
-                else
-                {
-                    comboSurface.Select();
-                }
+                comboSurface.Select();
 
                 return false;
             }
@@ -88,7 +94,6 @@ namespace MegaDesk3_MarekSwan
             else
                 return true;
         }
-
 
     }
 }

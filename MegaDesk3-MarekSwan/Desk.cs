@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MegaDesk3_MarekSwan
 {
-    class Desk
+    public class Desk
     {
         //properties
-        private float Width { get; set; }
-        private float Depth { get; set; }
-        private int NumOfDraws { get; set; }
-        private float SurfaceArea { get; }
+        public float Width { get; set; }
+        public float Depth { get; set; }
+        public int NumOfDraws { get; set; }
+        public float SurfaceArea { get; }
         public SurfaceMaterials GetSurface { get; set; }
-        public int SurfaceValue { get; set; }
+        public float SurfaceValue { get; set; }
 
         public enum SurfaceMaterials
         {
@@ -30,7 +30,6 @@ namespace MegaDesk3_MarekSwan
         public Desk(float Width, float Depth, int NumOfDraws)
         {
             SurfaceArea = Width * Depth;
-            this.SurfaceValue = (int)SurfaceMaterials.Oak;
         }
 
         //method for sending Width and Depth
