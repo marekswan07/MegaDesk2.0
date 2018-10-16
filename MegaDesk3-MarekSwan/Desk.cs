@@ -29,7 +29,10 @@ namespace MegaDesk3_MarekSwan
         //default constructor
         public Desk(float Width, float Depth, int NumOfDraws)
         {
+            this.Width = Width;
+            this.Depth = Depth;
             SurfaceArea = Width * Depth;
+            this.NumOfDraws = NumOfDraws;
         }
 
         //method for sending Width and Depth

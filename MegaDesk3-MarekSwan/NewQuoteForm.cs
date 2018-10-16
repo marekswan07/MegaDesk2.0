@@ -27,7 +27,7 @@ namespace MegaDesk3_MarekSwan
         }
 
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        public void btnSubmit_Click(object sender, EventArgs e)
         {
             bool validInput = ComboBox_Validating();
 
@@ -43,12 +43,18 @@ namespace MegaDesk3_MarekSwan
             //trying something fancy here
             var currentDate = DateTime.Today;
             var quote = new DeskQuote((float)numUDWidth.Value,(float)numUDDepth.Value,
-                                       (int)numUDDraws.Value, (string)comboSurface.ValueMember,
-                                       (txtCustName.Text),(string)comboSpeed.ValueMember);
+                                       (int)numUDDraws.Value, comboSurface.SelectedIndex,
+                                       (txtCustName.Text),comboSpeed.SelectedIndex);
             quote.CalcQuote();
             quote.QuoteDate = currentDate;
 
-            
+            CalculatetedQuoteForm calculatedQuote = new CalculatetedQuoteForm(quote);
+            calculatedQuote.Tag = this;
+            calculatedQuote.Show(this);
+
+            var mainForm = (MainForm)Tag;
+            mainForm.Hide();
+            Hide();
         }
 
         private void ValidateCustomerName(object sender, EventArgs e)

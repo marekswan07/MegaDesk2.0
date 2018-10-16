@@ -8,13 +8,19 @@ namespace MegaDesk3_MarekSwan
 {
     public class DeskQuote
     {
-        public bool RushOrder { get; set; }
         public int RushValue { get; set; }
+        public decimal RushPrice { get; set; }
+        public string RushString { get; set; }
         public string CustName { get; set; }
         public DateTime QuoteDate { get; set; }
         public decimal QuotePrice { get; set; }
-        public string SurfaceMaterial { get; set; }
         public Desk Desk { get; set; }
+        public int SurfaceMaterial { get; set; }
+        public decimal SurfacePrice { get; set; }
+        public decimal SurfaceAreaPrice { get; set; }
+        public string SurfaceNme { get; set; }
+        public decimal DrawPrice { get; set; }
+
 
 
         //const values that won't change for calcs for now (allows for easy modifcation)
@@ -40,31 +46,42 @@ namespace MegaDesk3_MarekSwan
         const decimal RUSH_7DAY_G2000_PRICE = 40.00M;
 
         //Default Constructor, creates the desk in the constructor so that way its already done
-        public DeskQuote(float width,float depth, int draws, string SurfaceMaterial, string CustName, string RushValue)
+        public DeskQuote(float width,float depth, int draws, int SurfaceMaterial, string CustName, int RushValue)
         {
             Desk Desk = new Desk(width,depth,draws);
             this.Desk = Desk;
             this.SurfaceMaterial = SurfaceMaterial;
             this.CustName = CustName;
-            this.RushValue = Int32.Parse(RushValue);
+            this.RushValue = RushValue;
+            this.DrawPrice = DRAWS_PRICE;
         }
         
 
         //trying to figure out enums
 
-        public decimal CalcSurface(string SurfaceValue)
+        public decimal CalcSurface(int SurfaceValue)
         {
             switch (SurfaceValue)
             {
-                case "Oak":
+                case 0:
+                    this.SurfacePrice = SURFACE_OAK_PRICE;
+                    this.SurfaceNme = "Oak";
                     return SURFACE_OAK_PRICE;
-                case "Laminate":
+                case 1:
+                    this.SurfacePrice = SURFACE_LAMINATE_PRICE;
+                    this.SurfaceNme = "Laminate";
                     return SURFACE_LAMINATE_PRICE;
-                case "Pine":
+                case 3:
+                    this.SurfacePrice = SURFACE_PINE_PRICE;
+                    this.SurfaceNme = "Pine";
                     return SURFACE_PINE_PRICE;
-                case "Rosewood":
+                case 4:
+                    this.SurfacePrice = SURFACE_ROSEWOOD_PRICE;
+                    this.SurfaceNme = "Rosewood";
                     return SURFACE_ROSEWOOD_PRICE;
                 default:
+                    this.SurfacePrice = SURFACE_VENEER_PRICE;
+                    this.SurfaceNme = "Veneer";
                     return SURFACE_VENEER_PRICE;
 
             }
@@ -77,11 +94,17 @@ namespace MegaDesk3_MarekSwan
             {
                 switch (RushValue)
                 {
-                    case 3:
+                    case 1:
+                        this.RushString = "3 Day Rush";
+                        this.RushPrice = RUSH_3DAY_L1000_PRICE;
                         return RUSH_3DAY_L1000_PRICE;
-                    case 5:
+                    case 2:
+                        this.RushString = "5 Day Rush";
+                        this.RushPrice = RUSH_5DAY_L1000_PRICE;
                         return RUSH_5DAY_L1000_PRICE;
-                    case 7:
+                    case 3:
+                        this.RushString = "7 Day Rush";
+                        this.RushPrice = RUSH_7DAY_L1000_PRICE;
                         return RUSH_7DAY_L1000_PRICE;
 
                 }
@@ -90,11 +113,17 @@ namespace MegaDesk3_MarekSwan
             {
                 switch (RushValue)
                 {
-                    case 3:
+                    case 1:
+                        this.RushString = "3 Day Rush";
+                        this.RushPrice = RUSH_3DAY_1000_TO_2000_PRICE;
                         return RUSH_3DAY_1000_TO_2000_PRICE;
-                    case 5:
+                    case 2:
+                        this.RushString = "5 Day Rush";
+                        this.RushPrice = RUSH_5DAY_1000_TO_2000_PRICE;
                         return RUSH_5DAY_1000_TO_2000_PRICE;
-                    case 7:
+                    case 3:
+                        this.RushString = "7 Day Rush";
+                        this.RushPrice = RUSH_7DAY_1000_TO_2000_PRICE;
                         return RUSH_7DAY_1000_TO_2000_PRICE;
 
                 }
@@ -103,20 +132,28 @@ namespace MegaDesk3_MarekSwan
             {
                 switch (RushValue)
                 {
-                    case 3:
+                    case 1:
+                        this.RushString = "3 Day Rush";
+                        this.RushPrice = RUSH_3DAY_G2000_PRICE;
                         return RUSH_3DAY_G2000_PRICE;
-                    case 5:
+                    case 2:
+                        this.RushString = "5 Day Rush";
+                        this.RushPrice = RUSH_5DAY_G2000_PRICE;
                         return RUSH_5DAY_G2000_PRICE;
-                    case 7:
+                    case 3:
+                        this.RushString = "7 Day Rush";
+                        this.RushPrice = RUSH_7DAY_G2000_PRICE;
                         return RUSH_7DAY_G2000_PRICE;
 
                 }
             }
+            this.RushPrice = DELIVERY_14_DAY_PRICE;
+            this.RushString = "No Rush";
             return DELIVERY_14_DAY_PRICE;
         }
 
 
-        public decimal CalcQuote()
+        public void CalcQuote()
         {
             //base price
             decimal QuotePrice = DESK_BASE_PRICE + (DRAWS_PRICE * Desk.NumOfDraws);
@@ -125,6 +162,7 @@ namespace MegaDesk3_MarekSwan
             if (Desk.SurfaceArea > 1000)
             {
                 decimal ExtraArea = (decimal)Desk.SurfaceArea - 1000;
+                this.SurfaceAreaPrice = ExtraArea;
                 QuotePrice += ExtraArea;
             }
 
@@ -136,7 +174,7 @@ namespace MegaDesk3_MarekSwan
        
            
 
-            return QuotePrice;
+             this.QuotePrice = QuotePrice;
         }
 
 

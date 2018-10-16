@@ -19,7 +19,7 @@ namespace MegaDesk3_MarekSwan
 
         private void btnViewQuoteExit_Click(object sender, EventArgs e)
         {
-            var mainForm = (MainForm)Tag;
+            MainForm mainForm = new MainForm();
             mainForm.Show();
             Close();
         }

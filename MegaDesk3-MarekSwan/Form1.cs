@@ -44,7 +44,7 @@ namespace MegaDesk3_MarekSwan
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         //custom event created for displaying a date in a specified form, event activated on form load
