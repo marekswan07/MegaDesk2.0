@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MegaDesk3_MarekSwan
 {
@@ -79,6 +80,28 @@ namespace MegaDesk3_MarekSwan
             SearchQuoteForm newSearchForm = new SearchQuoteForm();
             newSearchForm.Show();
             Close();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            const string filename = "qoutes.txt";
+            try
+            {
+                if (!File.Exists(filename))
+                {
+                    File.Create("/bin/Debug/qoutes.txt");
+                }
+                System.IO.TextWriter textout =
+                    new System.IO.StreamWriter(filename);
+                textout.Write(quote.CustName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Save Unsuccessful");
+                saveToolStripMenuItem_Click( sender, e);
+                
+            }
+            MessageBox.Show("Save Successful");
         }
     }
 }
