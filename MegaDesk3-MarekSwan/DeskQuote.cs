@@ -32,6 +32,8 @@ namespace MegaDesk3_MarekSwan
         const decimal SURFACE_ROSEWOOD_PRICE = 300.00M;
         const decimal SURFACE_VENEER_PRICE = 125.00M;
         const decimal DELIVERY_14_DAY_PRICE = 0.00M;
+
+        //this will have to change to be dynamaic and load off a file
         // 3 day rush prices
         const decimal RUSH_3DAY_L1000_PRICE = 60.00M;
         const decimal RUSH_3DAY_1000_TO_2000_PRICE = 70.00M;

@@ -84,24 +84,33 @@ namespace MegaDesk3_MarekSwan
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string filename = "qoutes.txt";
+            const string filename = "quotes.txt";
             try
             {
                 if (!File.Exists(filename))
                 {
-                    File.Create("/bin/Debug/qoutes.txt");
+                    File.Create("/bin/Debug/quotes.txt");
                 }
-                System.IO.TextWriter textout =
-                    new System.IO.StreamWriter(filename);
-                textout.Write(quote.CustName);
+                else
+                {
+                    FileStream fs; 
+                    fs = new FileStream(filename, FileMode.Append, FileAccess.Write);
+                    StreamWriter file = new StreamWriter(fs);
+                    file.WriteLine(quote.CustName + "," + 
+                               quote.Desk.Width + "," +
+                               quote.Desk.Depth + "," +
+                               quote.Desk.NumOfDraws + "," +
+                               quote.SurfaceNme + "," +
+                               quote.RushString + "," +
+                               quote.QuotePrice);
+                    file.Close();
+                    MessageBox.Show("Save Successful");
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Save Unsuccessful");
-                saveToolStripMenuItem_Click( sender, e);
-                
             }
-            MessageBox.Show("Save Successful");
         }
     }
 }
