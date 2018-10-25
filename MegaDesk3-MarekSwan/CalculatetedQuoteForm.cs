@@ -100,7 +100,7 @@ namespace MegaDesk3_MarekSwan
                                quote.Desk.Width + "," +
                                quote.Desk.Depth + "," +
                                quote.Desk.NumOfDraws + "," +
-                               quote.SurfaceNme + "," +
+                               quote.SurfaceMaterial + "," +
                                quote.RushString + "," +
                                quote.QuotePrice);
                     file.Close();

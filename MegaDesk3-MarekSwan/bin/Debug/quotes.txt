@@ -1,4 +1,6 @@
-Bob Tabor,24,12,2,Oak,3 Day Rush,560.00
-Marek,24,12,2,Pine,3 Day Rush,410.00
-Marek1,24,12,2,Pine,3 Day Rush,410.00
-Bro Thayne,24,12,4,Oak,3 Day Rush,660.00
+Bob Tabor,24,12,2,1,3 Day Rush,560.00
+Marek,24,12,2,2,3 Day Rush,410.00
+Marek1,24,12,2,3,3 Day Rush,410.00
+Bro Thayne,24,12,4,4,3 Day Rush,660.00
+Marek2,24,12,2,3,3 Day Rush,410.00
+Marek45,24,12,2,0,3 Day Rush,560.00
