@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MegaDesk3_MarekSwan
 {
-    public class Desk
+    public struct Desk
     {
         //properties
-        public float Width { get; set; }
-        public float Depth { get; set; }
-        public int NumOfDraws { get; set; }
-        public float SurfaceArea { get; }
+        public float Width;
+        public float Depth;
+        public int NumOfDraws;
+        public float SurfaceArea;
         public SurfaceMaterials GetSurface { get; set; }
-        public float SurfaceValue { get; set; }
+        public float SurfaceValue;
 
         public enum SurfaceMaterials
         {
@@ -23,16 +23,6 @@ namespace MegaDesk3_MarekSwan
             Pine,
             Rosewood,
             Veneer
-        }
-
-
-        //default constructor
-        public Desk(float Width, float Depth, int NumOfDraws)
-        {
-            this.Width = Width;
-            this.Depth = Depth;
-            SurfaceArea = Width * Depth;
-            this.NumOfDraws = NumOfDraws;
         }
 
         //method for sending Width and Depth

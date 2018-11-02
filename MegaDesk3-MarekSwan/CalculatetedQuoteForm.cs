@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk3_MarekSwan
 {
@@ -84,26 +85,30 @@ namespace MegaDesk3_MarekSwan
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string filename = "quotes.txt";
+            const string filename = "quotes.json";
+            FileStream fs;
+            fs = new FileStream(filename, FileMode.Append, FileAccess.Write);
+            StreamWriter file = new StreamWriter(fs);
+
             try
             {
                 if (!File.Exists(filename))
                 {
-                    File.Create("/bin/Debug/quotes.txt");
+                    File.Create(@"C:\Users\Marek\Documents\CIT365 Projects\MegaDesk4\MegaDesk3-MarekSwan\bin\Debug\quotes.json");
+                    string json = JsonConvert.SerializeObject(quote);
+
+
+                    file.WriteLine(json);
+                    file.Close();
+     
+                    MessageBox.Show("Save Successful");
                 }
                 else
                 {
-                    FileStream fs; 
-                    fs = new FileStream(filename, FileMode.Append, FileAccess.Write);
-                    StreamWriter file = new StreamWriter(fs);
-                    file.WriteLine(quote.CustName + "," + 
-                               quote.Desk.Width + "," +
-                               quote.Desk.Depth + "," +
-                               quote.Desk.NumOfDraws + "," +
-                               quote.SurfaceMaterial + "," +
-                               quote.RushString + "," +
-                               quote.QuotePrice);
+                    string json = JsonConvert.SerializeObject(quote);
+                    file.WriteLine(json);
                     file.Close();
+
                     MessageBox.Show("Save Successful");
                 }
             }

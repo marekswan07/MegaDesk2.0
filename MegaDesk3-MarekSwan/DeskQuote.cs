@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MegaDesk3_MarekSwan
 {
@@ -14,14 +15,13 @@ namespace MegaDesk3_MarekSwan
         public string CustName { get; set; }
         public DateTime QuoteDate { get; set; }
         public decimal QuotePrice { get; set; }
-        public Desk Desk { get; set; }
         public int SurfaceMaterial { get; set; }
         public decimal SurfacePrice { get; set; }
         public decimal SurfaceAreaPrice { get; set; }
         public string SurfaceNme { get; set; }
         public decimal DrawPrice { get; set; }
-
-
+        public Array priceArray { get; set; }
+        public Desk Desk;
 
         //const values that won't change for calcs for now (allows for easy modifcation)
         const decimal DESK_BASE_PRICE = 200.00M;
@@ -33,31 +33,34 @@ namespace MegaDesk3_MarekSwan
         const decimal SURFACE_VENEER_PRICE = 125.00M;
         const decimal DELIVERY_14_DAY_PRICE = 0.00M;
 
-        //this will have to change to be dynamaic and load off a file
+        //this will have to change to be dynamaic and load off a file (WIP)
         // 3 day rush prices
-        const decimal RUSH_3DAY_L1000_PRICE = 60.00M;
-        const decimal RUSH_3DAY_1000_TO_2000_PRICE = 70.00M;
-        const decimal RUSH_3DAY_G2000_PRICE = 80.00M;
+        decimal RUSH_3DAY_L1000_PRICE = 0;
+        decimal RUSH_3DAY_1000_TO_2000_PRICE = 0;
+        decimal RUSH_3DAY_G2000_PRICE = 0;
         // 5 day rush prices 
-        const decimal RUSH_5DAY_L1000_PRICE = 40.00M;
-        const decimal RUSH_5DAY_1000_TO_2000_PRICE = 50.00M;
-        const decimal RUSH_5DAY_G2000_PRICE = 60.00M;
+        decimal RUSH_5DAY_L1000_PRICE = 0;
+        decimal RUSH_5DAY_1000_TO_2000_PRICE = 0;
+        decimal RUSH_5DAY_G2000_PRICE = 0;
         // 7 day rush prices
-        const decimal RUSH_7DAY_L1000_PRICE = 30.00M;
-        const decimal RUSH_7DAY_1000_TO_2000_PRICE = 35.00M;
-        const decimal RUSH_7DAY_G2000_PRICE = 40.00M;
+        decimal RUSH_7DAY_L1000_PRICE = 0;
+        decimal RUSH_7DAY_1000_TO_2000_PRICE = 0;
+        decimal RUSH_7DAY_G2000_PRICE = 0;
+
+
 
         //Default Constructor, creates the desk in the constructor so that way its already done
         public DeskQuote(float width,float depth, int draws, int SurfaceMaterial, string CustName, int RushValue)
         {
-            Desk Desk = new Desk(width,depth,draws);
-            this.Desk = Desk;
+            Desk.Width = width;
+            Desk.Depth = depth;
+            Desk.NumOfDraws = draws;
             this.SurfaceMaterial = SurfaceMaterial;
             this.CustName = CustName;
             this.RushValue = RushValue;
             this.DrawPrice = DRAWS_PRICE;
-        }
-        
+            this.priceArray = GetRushOrder();
+    }
 
         //trying to figure out enums
 
@@ -154,9 +157,9 @@ namespace MegaDesk3_MarekSwan
             return DELIVERY_14_DAY_PRICE;
         }
 
-
         public void CalcQuote()
         {
+
             //base price
             decimal QuotePrice = DESK_BASE_PRICE + (DRAWS_PRICE * Desk.NumOfDraws);
 
@@ -173,19 +176,60 @@ namespace MegaDesk3_MarekSwan
 
             //calculate rush price
             QuotePrice += CalcRush(this.RushValue, Desk.SurfaceArea);
-       
-           
 
              this.QuotePrice = QuotePrice;
         }
 
+        public Array GetRushOrder()
+        {
+            int[,] tempArray = new int[3, 3];
+            int c = 0;
+            int i = 0;
+            string path = @"C:\Users\Marek\Documents\CIT365 Projects\MegaDesk4\MegaDesk3-MarekSwan\bin\Debug\rushOrderPrices.txt";
+            StreamReader reader = new StreamReader(path);
 
+            try
+            {
+                foreach (string input in File.ReadLines(path))
+                {
+                    if (i == 3)
+                    {
+                        c++;
+                        i = 0;
+                        tempArray[c, i] = Convert.ToInt32(input);
+                        i++;
+                    }
+                    else
+                    {
+                        tempArray[c, i] = Convert.ToInt32(input);
+                        i++;
+                    }
 
+                }
+            }
+            catch
+            {
+                return null;
+            }
+ 
+            reader.Close();
 
+            //assign values to variables that way calculations may occur
+            // 3 day rush prices
+            RUSH_3DAY_L1000_PRICE = tempArray[0, 0];
+            RUSH_3DAY_1000_TO_2000_PRICE = tempArray[0, 1];
+            RUSH_3DAY_G2000_PRICE = tempArray[0, 2];
+            // 5 day rush prices 
+            RUSH_5DAY_L1000_PRICE = tempArray[1, 0];
+            RUSH_5DAY_1000_TO_2000_PRICE = tempArray[1, 1];
+            RUSH_5DAY_G2000_PRICE = tempArray[1, 2];
+            // 7 day rush prices
+            RUSH_7DAY_L1000_PRICE = tempArray[2, 0];
+            RUSH_7DAY_1000_TO_2000_PRICE = tempArray[2, 1];
+            RUSH_7DAY_G2000_PRICE = tempArray[2, 2];
 
-
-
-
+            return tempArray;
+        }
 
     }
 }
